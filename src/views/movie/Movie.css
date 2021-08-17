@@ -1,0 +1,160 @@
+.container {
+  width: 100%;
+  height: auto;
+}
+
+.movieContainer {
+  display: grid;
+  grid-template-columns: 50% 50% repeat(auto-fill, minmax(16rem, 1fr));
+  justify-items: center;
+  align-items: center;
+  margin: 80px auto;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 120px -25px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+}
+
+.imgContainer {
+  justify-self: center;
+  margin: 20px;
+}
+
+img {
+  float: left;
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.infoSectionContainer {
+  justify-self: center;
+  margin: 20px;
+}
+
+h1 {
+  display: inline-block;
+  color: black;
+  font-weight: 400;
+}
+
+.rating {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+h4 {
+  color: #555;
+  font-weight: 400;
+}
+
+.minutes {
+  display: inline-block;
+  margin-top: 15px;
+  color: #555;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.type {
+  display: inline-block;
+  color: #959595;
+  margin-left: 10px;
+}
+
+.text {
+  color: #545454;
+}
+
+@media screen and (max-width: 700px) {
+  .movieContainer {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
+
+  .container {
+      align-content: center;
+  }
+}
+
+/* .movie_header {
+  position: relative;
+  padding: 25px;
+}
+
+h1 {
+  display: inline-block;
+  color: black;
+  font-weight: 400;
+}
+
+h4 {
+  color: #555;
+  font-weight: 400;
+}
+
+.minutes {
+  display: inline-block;
+  margin-top: 15px;
+  color: #555;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.type {
+  display: inline-block;
+  color: #959595;
+  margin-left: 10px;
+}
+
+.img {
+  float: left;
+  margin-right: 20px;
+  height: 400px;
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+.movie_desc {
+  padding: 25px;
+}
+
+.text {
+  color: #545454;
+}
+
+@media screen and (min-width: 768px) {
+  .info_section {
+    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+  }
+
+  .blur_back {
+    width: 80%;
+    background-position: -100% 10% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movie_card {
+    width: 95%;
+    margin: 70px auto;
+    min-height: 350px;
+    height: auto;
+  }
+
+  .movie_header {
+    width: 100%;
+  }
+
+  .movie_desc {
+    width: 100%;
+  }
+
+  .info_section {
+    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+    display: inline-grid;
+  }
+
+  .img {
+    height: 300px;
+  }
+} */
