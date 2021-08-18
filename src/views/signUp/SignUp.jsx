@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./SignUp.css";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { Link, useHistory } from "react-router-dom";
 
 function SignUp() {
@@ -28,9 +28,18 @@ function SignUp() {
           passwordRef.current.value
         )
         .then((userAuth) => {
-          userAuth.user.updateProfile({
-            displayName: userNameRef.current.value,
-          });
+          userAuth.user
+            .updateProfile({
+              displayName: userNameRef.current.value,
+            })
+            .then(() => {
+              db.collection("users").doc(userAuth.user.uid).set({
+                id: userAuth.user.uid,
+                email: userAuth.user.email,
+                name: userAuth.user.displayName,
+                favourites: [],
+              });
+            });
         });
       history.push("/login");
     } catch (error) {

@@ -43,13 +43,13 @@ function Navbar() {
           ) : (
             <ul className="nav-menu">
               <li className="nav-item">
-                <Link className="nav-link">Welcome {userName}</Link>
+                <Link to="/#" className="nav-link">Welcome {userName}</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link">Favs</Link>
+                <Link to="/#" className="nav-link">Favs</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" onClick={handleClick}>
+                <Link to="/#" className="nav-link" onClick={handleClick}>
                   LogOut
                 </Link>
               </li>
