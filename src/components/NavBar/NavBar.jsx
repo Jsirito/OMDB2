@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 function Navbar() {
@@ -11,14 +11,14 @@ function Navbar() {
           </a>
           <ul className="nav-menu">
             <li className="nav-item">
-              <a href="#" className="nav-link">
+            <Link className="nav-link" to={"/login"}>
                 LogIn
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" className="nav-link">
-                Register
-              </a>
+              <Link className="nav-link" to={"/signup"}>
+                SignUp
+              </Link>
             </li>
           </ul>
           <div className="hamburger">

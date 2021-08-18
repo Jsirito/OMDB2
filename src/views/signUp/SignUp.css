@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  /* background: linear-gradient(to right, #e5e6e6 10%, transparent 100%); */
+  border-radius: 10px;
+}
+
+.signUpContainer {
+  max-width: 700px;
+  width: 100%;
+  padding: 25px 30px;
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background: linear-gradient(135deg, #71b7e6, #482ff7);
+}
+
+.userDetailsContainer {
+  margin: 20px 0 12px 0;
+}
+
+.inputBox {
+  margin-bottom: 15px;
+  width: calc(100% / 2 -20px);
+}
+
+.details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.userDetailsContainer .inputBox input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.userDetailsContainer .inputBox input:focus,
+.userDetailsContainer .inputBox input:valid {
+  border-color: #482ff7;
+}
+
+.button {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #71b7e6, #482ff7);
+}
