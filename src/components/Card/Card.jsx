@@ -15,7 +15,7 @@ function Card(props) {
   return (
     <div class="wrapper">
       <div class="card">
-        <img src={img} />
+        <img src={img} alt={title}/>
         <div class="descriptions">
           <h1>{title}</h1>
           <h4>{year}</h4>
