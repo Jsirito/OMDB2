@@ -11,10 +11,12 @@ import LogIn from "./views/logIn/LogIn";
 import SignUp from "./views/signUp/SignUp";
 
 function App() {
+
+
   return (
     <Provider store={store}>
       <BrowserRouter>
-      <NavBar />
+        <NavBar />
         <div className="App">
           <Switch>
             <Route path="/" exact component={Home} />

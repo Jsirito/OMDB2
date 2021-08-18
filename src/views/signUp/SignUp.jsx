@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./SignUp.css";
-import { auth, db } from "../../firebase";
+import { auth } from "../../firebase";
 import { Link, useHistory } from "react-router-dom";
 
 function SignUp() {
@@ -9,6 +9,7 @@ function SignUp() {
   const history = useHistory();
 
   const emailRef = useRef();
+  const userNameRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
@@ -21,10 +22,16 @@ function SignUp() {
     try {
       setError("");
       setLoading(true);
-      await auth.createUserWithEmailAndPassword(
-        emailRef.current.value,
-        passwordRef.current.value
-      );
+      await auth
+        .createUserWithEmailAndPassword(
+          emailRef.current.value,
+          passwordRef.current.value
+        )
+        .then((userAuth) => {
+          userAuth.user.updateProfile({
+            displayName: userNameRef.current.value,
+          });
+        });
       history.push("/login");
     } catch (error) {
       setError(error.message);
@@ -40,7 +47,12 @@ function SignUp() {
           <div className="userDetailsContainer">
             <div className="inputBox">
               <span className="details">User Name</span>
-              <input type="text" placeholder="Enter user name" required />
+              <input
+                type="text"
+                ref={userNameRef}
+                placeholder="Enter user name"
+                required
+              />
             </div>
             <div className="inputBox">
               <span className="details">Email</span>

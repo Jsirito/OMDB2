@@ -1,12 +1,15 @@
 import { useState, useRef } from "react";
 import { auth } from "../../firebase";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setActiveUser } from "../../state/userSlice";
 import "./LogIn.css";
 
 function LogIn() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -17,10 +20,20 @@ function LogIn() {
     try {
       setError("");
       setLoading(true);
-      await auth.signInWithEmailAndPassword(
-        emailRef.current.value,
-        passwordRef.current.value
-      );
+      await auth
+        .signInWithEmailAndPassword(
+          emailRef.current.value,
+          passwordRef.current.value
+        )
+        .then((userAuth) => {
+          dispatch(
+            setActiveUser({
+              userName: userAuth.user.displayName,
+              userEmail: userAuth.user.email,
+              uid: userAuth.user.uid,
+            })
+          );
+        });
       history.push("/");
     } catch (error) {
       alert(error.message);
@@ -65,7 +78,7 @@ function LogIn() {
           <br />
 
           <Link className="alreadyAccount" to={"/signup"}>
-            New Account? SignUp
+            Need new account? SignUp
           </Link>
         </form>
       </div>
