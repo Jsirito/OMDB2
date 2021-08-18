@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import store from "./state/store";
+
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./views/home";
 import Movie from "./views/movie/Movie";

@@ -36,7 +36,7 @@ function SearchBar() {
           </button>
         </div>
       </form>
-      {movies == undefined ? <p>No match, try again</p> : <p>Have fun!</p>}
+      {movies === undefined ? <p>No match, try again</p> : <p>Have fun!</p>}
     </div>
   );
 }

@@ -9,7 +9,7 @@ function Movie() {
     <div className="container">
       <div className="movieContainer">
         <div className="imgContainer">
-          <img className="img" src={movie.Poster} />
+          <img className="img" src={movie.Poster} alt={movie.Title}/>
         </div>
         <div className="infoSectionContainer">
           <h1>{movie.Title}</h1>
