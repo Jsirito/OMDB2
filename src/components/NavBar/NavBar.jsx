@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLogOutState, selectUserName } from "../../state/userSlice";
 import { auth } from "../../firebase";
@@ -7,14 +7,17 @@ import "./NavBar.css";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const userName = useSelector(selectUserName);
 
-  async function handleClick(e) {
+  async function handleLogOut(e) {
     e.preventDefault();
     try {
       await auth.signOut();
       dispatch(setUserLogOutState());
+      localStorage.removeItem("OMDBuserID");
+      history.push("/");
     } catch (error) {
       alert(error.message);
     }
@@ -43,13 +46,17 @@ function Navbar() {
           ) : (
             <ul className="nav-menu">
               <li className="nav-item">
-                <Link to="/#" className="nav-link">Welcome {userName}</Link>
+                <Link to="/#" className="nav-link">
+                  Welcome {userName}
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/#" className="nav-link">Favs</Link>
+                <Link to="/favourites" className="nav-link">
+                  Favs
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/#" className="nav-link" onClick={handleClick}>
+                <Link to="/#" className="nav-link" onClick={handleLogOut}>
                   LogOut
                 </Link>
               </li>
