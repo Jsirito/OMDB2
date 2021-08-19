@@ -46,9 +46,9 @@ function Navbar() {
           ) : (
             <ul className="nav-menu">
               <li className="nav-item">
-                <Link to="/#" className="nav-link">
+                <div className="nav-link">
                   Welcome {userName}
-                </Link>
+                </div>
               </li>
               <li className="nav-item">
                 <Link to="/favourites" className="nav-link">
@@ -56,9 +56,9 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/#" className="nav-link" onClick={handleLogOut}>
+                <a href="/" className="nav-link" onClick={handleLogOut}>
                   LogOut
-                </Link>
+                </a>
               </li>
             </ul>
           )}

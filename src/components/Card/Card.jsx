@@ -20,7 +20,7 @@ function Card(props) {
     db.collection("users")
       .doc(user.uid)
       .update({
-        favourites: firebase.firestore.FieldValue.arrayUnion(title),
+        favourites: firebase.firestore.FieldValue.arrayUnion({img, title, imdbID, year, type}),
       });
   };
 

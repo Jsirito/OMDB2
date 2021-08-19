@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import Card from "../Card/Card";
 
-import "./MovieGrid.css"
+import "./MovieGrid.css";
 
 function MovieGrid() {
   const movies = useSelector((state) => state.movies.Search);
@@ -19,7 +19,13 @@ function MovieGrid() {
   return (
     <div className="moviesContainer">
       {movies.map((movie) => (
-        <Card img={movie.Poster} title={movie.Title} imdbID={movie.imdbID} year={movie.Year} type={movie.Type}/>
+        <Card
+          img={movie.Poster}
+          title={movie.Title}
+          imdbID={movie.imdbID}
+          year={movie.Year}
+          type={movie.Type}
+        />
       ))}
     </div>
   );

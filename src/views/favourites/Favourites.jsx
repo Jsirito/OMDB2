@@ -1,35 +1,49 @@
 import { db, auth } from "../../firebase";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setActiveUser } from "../../state/userSlice";
+import { useEffect, useState } from "react";
+import Card from "../../components/Card/Card";
 
 function Favourites() {
-  const dispatch = useDispatch();
-
-  const userUid = localStorage.getItem("OMDBuserID");
-
-  db.collection("users")
-    .doc(userUid)
-    .get()
-    .then((res) => {
-      console.log(res.data().favourites);
-    })
-    .catch((err) => console.log(err));
+  const [favouritesMovies, setfavouritesMovies] = useState();
+  console.log(favouritesMovies);
 
   useEffect(() => {
+    let userUid = "";
     auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-        dispatch(
-          setActiveUser({
-            userName: userAuth.displayName,
-            userEmail: userAuth.email,
-            uid: userAuth.uid,
+        userUid = userAuth.uid;
+        db.collection("users")
+          .doc(userUid)
+          .get()
+          .then((res) => {
+            setfavouritesMovies(res.data().favourites);
           })
-        );
+          .catch((err) => console.log(err));
       }
     });
-  }, [dispatch]);
-  return <div>FAVS</div>;
+  }, []);
+
+  if (!favouritesMovies) {
+    return (
+      <div>
+        <h1>NO FAVS</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div className="moviesContainer">
+      FAVS
+      {favouritesMovies.map((favouriteMovie) => (
+        <Card
+          img={favouriteMovie.img}
+          title={favouriteMovie.title}
+          imdbID={favouriteMovie.imdbID}
+          year={favouriteMovie.year}
+          type={favouriteMovie.type}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default Favourites;
