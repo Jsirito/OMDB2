@@ -33,7 +33,9 @@ function LogIn() {
               uid: userAuth.user.uid,
             })
           );
+          localStorage.setItem("OMDBuserID", userAuth.user.uid);
         });
+
       history.push("/");
     } catch (error) {
       alert(error.message);

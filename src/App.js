@@ -9,6 +9,7 @@ import Home from "./views/home";
 import Movie from "./views/movie/Movie";
 import LogIn from "./views/logIn/LogIn";
 import SignUp from "./views/signUp/SignUp";
+import Favourites from "./views/favourites/Favourites";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/movie/:id" exact component={Movie} />
             <Route path="/login" exact component={LogIn} />
             <Route path="/signup" exact component={SignUp} />
+            <Route path="/favourites" exact component={Favourites} />
           </Switch>
         </div>
       </BrowserRouter>
