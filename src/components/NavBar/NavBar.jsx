@@ -45,11 +45,11 @@ function Navbar() {
             </ul>
           ) : (
             <ul className="nav-menu">
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <div className="nav-link">
                   Welcome {userName}
                 </div>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/favourites" className="nav-link">
                   Favs
@@ -62,11 +62,6 @@ function Navbar() {
               </li>
             </ul>
           )}
-          <div className="hamburger">
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </div>
         </nav>
       </header>
     </div>

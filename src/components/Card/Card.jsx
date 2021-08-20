@@ -20,24 +20,30 @@ function Card(props) {
     db.collection("users")
       .doc(user.uid)
       .update({
-        favourites: firebase.firestore.FieldValue.arrayUnion({img, title, imdbID, year, type}),
+        favourites: firebase.firestore.FieldValue.arrayUnion({
+          img,
+          title,
+          imdbID,
+          year,
+          type,
+        }),
       });
   };
 
   return (
-    <div class="wrapper">
-      <div class="card">
-        <img src={img} alt={title} />
-        <div class="descriptions">
-          <h1>{title}</h1>
-          <h4>{year}</h4>
-          <h5>{type}</h5>
-          <Link to={`/movie/${imdbID}`}>
-            <button onClick={handleClick}>Read More</button>
-          </Link>
-          <br />
-          <br />
-          {user.userName ? <button onClick={handleAddToFavs}>Add to fav</button> : ""}
+    <div class="card">
+      <img src={img} alt={title} />
+      <div class="descriptions">
+        <h1>{title}</h1>
+        <h4>{year}</h4>
+        <h5>{type}</h5>
+        <div className="buttonsWrapper">
+            <Link className="cardButton" to={`/movie/${imdbID}`} onClick={handleClick}>Read More</Link>
+          {user.userName ? (
+            <Link className="cardButton" onClick={handleAddToFavs}>Add to Favs</Link>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

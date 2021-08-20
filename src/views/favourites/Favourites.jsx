@@ -1,10 +1,10 @@
 import { db, auth } from "../../firebase";
 import { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
+import "./favourites.css";
 
 function Favourites() {
   const [favouritesMovies, setfavouritesMovies] = useState();
-  console.log(favouritesMovies);
 
   useEffect(() => {
     let userUid = "";
@@ -31,17 +31,18 @@ function Favourites() {
   }
 
   return (
-    <div className="moviesContainer">
-      FAVS
-      {favouritesMovies.map((favouriteMovie) => (
-        <Card
-          img={favouriteMovie.img}
-          title={favouriteMovie.title}
-          imdbID={favouriteMovie.imdbID}
-          year={favouriteMovie.year}
-          type={favouriteMovie.type}
-        />
-      ))}
+    <div className="homeContainer">
+      <div className="moviesContainer">
+        {favouritesMovies.map((favouriteMovie) => (
+          <Card
+            img={favouriteMovie.img}
+            title={favouriteMovie.title}
+            imdbID={favouriteMovie.imdbID}
+            year={favouriteMovie.year}
+            type={favouriteMovie.type}
+          />
+        ))}
+      </div>
     </div>
   );
 }
