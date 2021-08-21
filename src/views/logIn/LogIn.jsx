@@ -55,7 +55,6 @@ function LogIn() {
               <input
                 type="text"
                 ref={emailRef}
-                placeholder="Enter email"
                 required
               />
             </div>
@@ -64,7 +63,6 @@ function LogIn() {
               <input
                 type="password"
                 ref={passwordRef}
-                placeholder="Enter password"
                 required
               />
               {error && <div className="inputError">{error}</div>}

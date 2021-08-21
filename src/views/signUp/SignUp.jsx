@@ -43,7 +43,7 @@ function SignUp() {
         });
       history.push("/login");
     } catch (error) {
-      setError(error.message);
+      alert(error.message);
     }
     setLoading(false);
   }
@@ -59,7 +59,6 @@ function SignUp() {
               <input
                 type="text"
                 ref={userNameRef}
-                placeholder="Enter user name"
                 required
               />
             </div>
@@ -68,7 +67,6 @@ function SignUp() {
               <input
                 type="text"
                 ref={emailRef}
-                placeholder="Enter email"
                 required
               />
             </div>
@@ -77,7 +75,7 @@ function SignUp() {
               <input
                 type="password"
                 ref={passwordRef}
-                placeholder="Enter password"
+                placeholder="At least 6 characters"
                 required
               />
             </div>
@@ -86,7 +84,6 @@ function SignUp() {
               <input
                 type="password"
                 ref={confirmPasswordRef}
-                placeholder="Enter password"
                 required
               />
               {error && <div className="inputError">{error}</div>}
