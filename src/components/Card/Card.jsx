@@ -7,7 +7,7 @@ import firebase from "firebase/app";
 import "./Card.css";
 
 function Card(props) {
-  const history = useHistory()
+  const history = useHistory();
   const [currentURL, setcurrentURL] = useState();
 
   const user = useSelector((state) => state.user);
@@ -32,7 +32,7 @@ function Card(props) {
           type,
         }),
       });
-      alert(`${title} added`)
+    alert(`${title} added`);
   };
 
   const removeFromFavs = () => {
@@ -47,7 +47,7 @@ function Card(props) {
           type,
         }),
       });
-      alert(`${title} was removed`)
+    alert(`${title} was removed`);
   };
 
   useEffect(() => {
@@ -56,7 +56,15 @@ function Card(props) {
 
   return (
     <div class="card">
-      <img src={img} alt={title} />
+      {img === "N/A" ? (
+        <img
+          src="/no-image.png"
+          alt={title}
+        />
+      ) : (
+        <img src={img} alt={title} />
+      )}
+
       <div class="descriptions">
         <h1>{title}</h1>
         <h4>{year}</h4>

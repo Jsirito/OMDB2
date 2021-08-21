@@ -5,10 +5,21 @@ import "./Movie.css";
 
 function Movie() {
   const movie = useSelector((state) => state.movie);
+  if (!movie) {
+    return (
+      <div>
+        <h1> </h1>
+      </div>
+    );
+  }
   return (
     <div className="movieContainer">
       <div className="imgContainer">
-        <img className="img" src={movie.Poster} alt={movie.Title} />
+        {movie.Poster === "N/A" ? (
+          <img className="img" src="/no-image.png" alt={movie.Title} />
+        ) : (
+          <img className="img" src={movie.Poster} alt={movie.Title} />
+        )}
       </div>
       <div className="infoSectionContainer">
         <h1>{movie.Title}</h1>
@@ -28,3 +39,4 @@ function Movie() {
 }
 
 export default Movie;
+

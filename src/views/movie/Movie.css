@@ -16,7 +16,6 @@
 }
 
 .imgContainer {
-  justify-self: center;
   margin: 20px;
 }
 
@@ -24,6 +23,8 @@ img {
   float: left;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .infoSectionContainer {
