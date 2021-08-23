@@ -2,13 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getSingleMovieRequest } from "../../state/actions/singleMovie";
 import { db } from "../../firebase";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import firebase from "firebase/app";
+import { useSnackbar } from "notistack";
 import "./Card.css";
 
 function Card(props) {
-  const history = useHistory();
   const [currentURL, setcurrentURL] = useState();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const user = useSelector((state) => state.user);
 
@@ -32,7 +33,7 @@ function Card(props) {
           type,
         }),
       });
-    alert(`${title} added`);
+    enqueueSnackbar(`${title} was added`, { variant: "success" });
   };
 
   const removeFromFavs = () => {
@@ -47,7 +48,7 @@ function Card(props) {
           type,
         }),
       });
-    alert(`${title} was removed`);
+    enqueueSnackbar(`${title} was removed`, { variant: "error" });
   };
 
   useEffect(() => {
@@ -57,10 +58,7 @@ function Card(props) {
   return (
     <div class="card">
       {img === "N/A" ? (
-        <img
-          src="/no-image.png"
-          alt={title}
-        />
+        <img src="/no-image.png" alt={title} />
       ) : (
         <img src={img} alt={title} />
       )}
