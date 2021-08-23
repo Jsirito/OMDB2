@@ -24,7 +24,15 @@ function SearchBar() {
     <div>
       {response === undefined ? (
         <div className="searchBarContainerUndefined">
-          {userName ? <p>{`Hello ${userName}`}</p> : ""}
+          {userName ? (
+            <div>
+              <p className="hello">Hello</p>
+              <span> </span>
+              <p className="name">{userName}</p>
+            </div>
+          ) : (
+            ""
+          )}
           <h1>Let's find a Movie!</h1>
           <form onSubmit={handleSubmit}>
             <div className="searchInputContainer">
@@ -43,7 +51,15 @@ function SearchBar() {
         </div>
       ) : (
         <div className="searchBarContainer">
-          {userName ? <p>{`Hello ${userName}`}</p> : ""}
+          {userName ? (
+            <div>
+              <p className="hello">Hello</p>
+              <span> </span>
+              <p className="name">{userName}</p>
+            </div>
+          ) : (
+            ""
+          )}
           <h1>Let's find a Movie</h1>
           <form onSubmit={handleSubmit}>
             <div className="searchInputContainer">
@@ -59,7 +75,7 @@ function SearchBar() {
               </button>
             </div>
           </form>
-          {response === "False" ? <h5>No match, try again...</h5> : <br/>}
+          {response === "False" ? <h5>No match, try again...</h5> : <br />}
         </div>
       )}
     </div>
