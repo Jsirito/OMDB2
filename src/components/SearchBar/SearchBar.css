@@ -51,6 +51,5 @@ p {
 
 .name {
   display: inline-block;
-  /* color: #482ff7; */
-  border-bottom: 2px dotted #482ff7;
+  color: #482ff7;
 }
